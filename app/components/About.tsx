@@ -55,6 +55,7 @@ export default function About() {
               stroke="#00732E"
               bg="#E3EEEE"
               icon="/uir.png"
+              note="Penerima Beasiswa Prestasi PemProv Riau 2021"
               fullWidth
             />
 
@@ -109,6 +110,7 @@ function InfoCard({
   subtitle,
   value,
   icon,
+  note,
   stroke,
   bg,
   fullWidth,
@@ -118,6 +120,7 @@ function InfoCard({
   subtitle: string;
   value?: string;
   icon?: string;
+  note?: string;
   stroke: string;
   bg: string;
   fullWidth?: boolean;
@@ -139,30 +142,43 @@ function InfoCard({
         border: `2px solid ${stroke}`,
       }}
     >
-      <div className="flex items-center gap-3">
-        {icon && (
-          <Image
-            src={icon}
-            alt={title}
-            width={30}
-            height={30}
-            className="rounded-full"
-          />
-        )}
-        <div className="flex items-center gap-2">
-          <p className="font-semibold text-[#444444] text-sm sm:text-base">
-            {title}
-          </p>
-          <span className="text-[#747474] text-sm">|</span>
-          <p className="text-[#747474] text-sm">{subtitle}</p>
-        </div>
-      </div>
+      <div className="w-full">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            {icon && (
+              <Image
+                src={icon}
+                alt={title}
+                width={30}
+                height={30}
+                className="rounded-full"
+              />
+            )}
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-[#444444] text-sm sm:text-base">
+                {title}
+              </p>
+              <span className="text-[#747474] text-sm">|</span>
+              <p className="text-[#747474] text-sm">{subtitle}</p>
+            </div>
+          </div>
 
-      {value && (
-        <span className="font-semibold text-[#444444] text-xs sm:text-sm">
-          {value}
-        </span>
-      )}
+          {value && (
+            <span className="font-semibold text-[#444444] text-xs sm:text-sm">
+              {value}
+            </span>
+          )}
+        </div>
+
+        {note && (
+          <p
+            className="mt-3 border-t pt-3 text-sm font-semibold text-[#747474]"
+            style={{ borderColor: stroke }}
+          >
+            {note}
+          </p>
+        )}
+      </div>
     </motion.div>
   );
 }
