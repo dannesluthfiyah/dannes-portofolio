@@ -73,12 +73,12 @@ export default function ProjectCard({
             >
               {isInternal
                 ? "View Gallery"
-                : category === "Design" || category === "Etc"
+                : category === "Design" || category === "Tech"
                   ? "Open Project"
                   : "Live Demo"}
             </span>
           )}
-          {codeLink && category !== "Design" && category !== "Etc" && (
+          {codeLink && category !== "Design" && category !== "Tech" && (
             <span className="text-xs sm:text-sm font-semibold text-gray-600">
               Code
             </span>

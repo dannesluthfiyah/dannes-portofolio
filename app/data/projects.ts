@@ -241,9 +241,17 @@ export const projectCategories: ProjectCategoryItem[] = [
     ],
   },
   {
-    title: "Etc",
+    title: "Tech",
     color: "#444444",
     projects: [
+      {
+        title: "Slip Gaji Generator",
+        description:
+          "Aplikasi web untuk membuat slip gaji secara cepat dan rapi, mencakup data karyawan, pendapatan, potongan, hingga perhitungan Take Home Pay. Hasil akhirnya berupa file PDF yang siap dicetak.",
+        tools: "React, Vite, Tailwind CSS, html2canvas, jsPDF",
+        image: "/projects/slipgajigenerator.png",
+        demoLink: "https://slipgajigenerator.vercel.app/",
+      },
       {
         title:
           "Implementasi Metode Deep Learning Dan Machine Learning Untuk Analisis Sentimen Peringatan Darurat Pada Media Sosial Youtube",
