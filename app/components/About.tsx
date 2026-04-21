@@ -172,7 +172,7 @@ function InfoCard({
 
         {note && (
           <p
-            className="mt-3 border-t pt-3 text-sm text-[#747474]"
+            className="mt-3 border-t pt-3 text-xs leading-relaxed text-[#747474] sm:text-sm"
             style={{ borderColor: stroke }}
           >
             {note}
