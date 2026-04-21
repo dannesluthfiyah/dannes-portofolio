@@ -94,6 +94,7 @@ export default function DesignCardDeck({
                         src={card.image}
                         alt={card.title}
                         fill
+                        unoptimized
                         className="object-cover"
                       />
                     ) : (

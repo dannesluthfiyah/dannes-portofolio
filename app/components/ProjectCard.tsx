@@ -40,6 +40,7 @@ export default function ProjectCard({
               src={image}
               alt="Project Thumbnail"
               fill
+              unoptimized
               className="object-cover rounded-md"
             />
           ) : (

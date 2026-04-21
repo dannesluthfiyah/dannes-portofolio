@@ -27,6 +27,7 @@ export default function SkillCard({
           src={img}
           alt={name}
           fill
+          unoptimized
           className="object-contain"
           sizes="(max-width: 640px) 72px, (max-width: 768px) 82px, 88px"
         />
