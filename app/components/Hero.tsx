@@ -24,7 +24,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/profile.png?v=20260419"
+            src="/profile.png"
             alt="Profile"
             width={200}
             height={200}

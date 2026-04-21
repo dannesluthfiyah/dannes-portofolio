@@ -198,7 +198,7 @@ export const projectCategories: ProjectCategoryItem[] = [
         description:
           "CASEIZONE adalah brand custom merch K-Pop untuk GirlGroup IZ*ONE. Saya membuat desain merch, katalog serta konten instagram seperti feed dan instastory untuk mendukung branding dan promosi.",
         tools: "PhotoShop, Canva",
-        image: "/projects/caseizone.png?v=20260419",
+        image: "/projects/caseizone.png",
         color: "#E86BA3",
         detailSlug: "caseizone",
       },
@@ -225,7 +225,7 @@ export const projectCategories: ProjectCategoryItem[] = [
         description:
           "SWEET DESSERT DESIRE adalah bisnis F&B pancong lumer di Makassar. Saya membuat logo, instastory, feed instagram, kartu ucapan, dan business card.",
         tools: "PhotoShop, Canva",
-        image: "/projects/sweetdessertdesire.png?v=20260420",
+        image: "/projects/sweetdessertdesire.png",
         color: "#B8860B",
         detailSlug: "sweetdessertdesire",
       },
