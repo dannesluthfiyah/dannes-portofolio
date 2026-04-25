@@ -1,88 +1,187 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { siteContent } from "../data/siteContent";
+import { useLanguage, type Language } from "./LanguageProvider";
 
-const experiences = [
-  {
-    role: "Admin Operational",
-    company: "PT. Mahir Trans Bersaudara",
-    type: "Full Time",
-    period: "May 2025 - Present",
-    duration: "1 year",
-    location: "Riau, Indonesia",
-    setup: "On Site / WFO",
-    accent: "#C5A600",
-    points: [
-      "Mengelola administrasi BPJS Kesehatan dan Ketenagakerjaan, termasuk pendaftaran karyawan, pembaruan data, dan monitoring.",
-      "Menyiapkan invoice, purchase order, serta dokumen operasional lainnya.",
-      "Mengurus administrasi perpajakan perusahaan melalui coretax (PPH21, PPN, PPH23).",
-    ],
-  },
-  {
-    role: "Human Resources Intern",
-    company: "PT Asrindo Citraseni Satria",
-    type: "Internship",
-    period: "Jul 2024 - Aug 2024",
-    duration: "2 months",
-    location: "Riau, Indonesia",
-    setup: "On Site",
-    accent: "#D83A34",
-    points: [
-      "Membuat prototype sistem monitoring dokumen Medical Check-Up berbasis web untuk meningkatkan efisiensi dokumentasi HR.",
-      "Mengelola dan memperbarui database karyawan agar data tetap akurat dan terstruktur melalui Excel dan Spreadsheet.",
-      "Mengoptimalkan sistem absensi digital menggunakan AppSheet untuk meningkatkan ketepatan presensi.",
-      "Mendukung aktivitas administrasi HR sehari-hari.",
-    ],
-  },
-  {
-    role: 'Student Exchange at UPN "Veteran" Yogyakarta',
-    company: "Kampus Merdeka",
-    type: "Full Time",
-    period: "Aug 2022 - Jan 2023",
-    duration: "6 months",
-    location: "Yogyakarta, Indonesia",
-    setup: "On Site",
-    accent: "#7F9E1B",
-    points: [
-      "Mengikuti program Pertukaran Mahasiswa Merdeka Batch 2 di UPN Veteran Yogyakarta.",
-      "Berpartisipasi dalam kegiatan sosial dan budaya melalui Modul Nusantara untuk memperkuat kerja sama tim dan kemampuan beradaptasi.",
-      "Terlibat dalam program berbasis masyarakat seperti bersih pantai, kunjungan ke panti asuhan, workshop batik, dan kunjungan museum.",
-    ],
-  },
-  {
-    role: "Admin",
-    company: "Kopi Chuseyo",
-    type: "Full Time",
-    period: "May 2021 - Nov 2021",
-    duration: "7 months",
-    location: "Jakarta, Indonesia",
-    setup: "Remote",
-    accent: "#5C5F6B",
-    points: [
-      "Mencatat data penjualan dan menyusun laporan keuangan harian.",
-      "Mengelola administrasi transaksi online dalam sistem kerja remote.",
-      "Mendukung kegiatan operasional Chuseyo K-Pop Store.",
-    ],
-  },
-  {
-    role: "Graphic Designer",
-    company: "CASEIZONE",
-    type: "Part Time",
-    period: "Aug 2020 - Jul 2021",
-    duration: "1 year",
-    location: "Jakarta, Indonesia",
-    setup: "Remote",
-    accent: "#C45A93",
-    points: [
-      "Menangani visual brand dan operasional toko online untuk merchandise K-Pop custom.",
-      "Mendesain semua kebutuhan branding dan promosi.",
-      "Membantu menjaga konsistensi identitas brand dan engagement audiens.",
-      "Mendukung pengelolaan transaksi online dan manajemen pesanan.",
-    ],
-  },
-];
+const experiencesByLanguage = {
+  en: [
+    {
+      role: "Operational Admin",
+      company: "PT. Mahir Trans Bersaudara",
+      type: "Full Time",
+      period: "May 2025 - Present",
+      duration: "1 year",
+      location: "Riau, Indonesia",
+      setup: "On Site / WFO",
+      accent: "#C5A600",
+      points: [
+        "Manage BPJS Health and Employment administration, including employee registration, data updates, and monitoring.",
+        "Prepare invoices, purchase orders, and other operational documents.",
+        "Handle company tax administration through Coretax, including PPh 21, VAT, and PPh 23.",
+      ],
+    },
+    {
+      role: "Human Resources Intern",
+      company: "PT Asrindo Citraseni Satria",
+      type: "Internship",
+      period: "Jul 2024 - Aug 2024",
+      duration: "2 months",
+      location: "Riau, Indonesia",
+      setup: "On Site",
+      accent: "#D83A34",
+      points: [
+        "Built a web-based medical check-up document monitoring prototype to improve HR documentation efficiency.",
+        "Managed and updated the employee database to keep records accurate and well-structured using Excel and spreadsheets.",
+        "Optimized the digital attendance system with AppSheet to improve attendance accuracy.",
+        "Supported daily HR administrative activities.",
+      ],
+    },
+    {
+      role: 'Student Exchange at UPN "Veteran" Yogyakarta',
+      company: "Kampus Merdeka",
+      type: "Full Time",
+      period: "Aug 2022 - Jan 2023",
+      duration: "6 months",
+      location: "Yogyakarta, Indonesia",
+      setup: "On Site",
+      accent: "#7F9E1B",
+      points: [
+        'Participated in the Merdeka Student Exchange Batch 2 program at UPN "Veteran" Yogyakarta.',
+        "Took part in social and cultural activities through Modul Nusantara to strengthen teamwork and adaptability.",
+        "Joined community-based programs such as beach cleanups, orphanage visits, batik workshops, and museum visits.",
+      ],
+    },
+    {
+      role: "Admin",
+      company: "Kopi Chuseyo",
+      type: "Full Time",
+      period: "May 2021 - Nov 2021",
+      duration: "7 months",
+      location: "Jakarta, Indonesia",
+      setup: "Remote",
+      accent: "#5C5F6B",
+      points: [
+        "Recorded sales data and prepared daily financial reports.",
+        "Managed online transaction administration in a remote work setup.",
+        "Supported the operational activities of Chuseyo K-Pop Store.",
+      ],
+    },
+    {
+      role: "Graphic Designer",
+      company: "CASEIZONE",
+      type: "Part Time",
+      period: "Aug 2020 - Jul 2021",
+      duration: "1 year",
+      location: "Jakarta, Indonesia",
+      setup: "Remote",
+      accent: "#C45A93",
+      points: [
+        "Handled brand visuals and online store operations for custom K-Pop merchandise.",
+        "Designed branding and promotional materials.",
+        "Helped maintain brand identity consistency and audience engagement.",
+        "Supported online transaction handling and order management.",
+      ],
+    },
+  ],
+  id: [
+    {
+      role: "Admin Operational",
+      company: "PT. Mahir Trans Bersaudara",
+      type: "Full Time",
+      period: "May 2025 - Present",
+      duration: "1 year",
+      location: "Riau, Indonesia",
+      setup: "On Site / WFO",
+      accent: "#C5A600",
+      points: [
+        "Mengelola administrasi BPJS Kesehatan dan Ketenagakerjaan, termasuk pendaftaran karyawan, pembaruan data, dan monitoring.",
+        "Menyiapkan invoice, purchase order, serta dokumen operasional lainnya.",
+        "Mengurus administrasi perpajakan perusahaan melalui Coretax (PPh 21, PPN, PPh 23).",
+      ],
+    },
+    {
+      role: "Human Resources Intern",
+      company: "PT Asrindo Citraseni Satria",
+      type: "Internship",
+      period: "Jul 2024 - Aug 2024",
+      duration: "2 months",
+      location: "Riau, Indonesia",
+      setup: "On Site",
+      accent: "#D83A34",
+      points: [
+        "Membuat prototype sistem monitoring dokumen medical check-up berbasis web untuk meningkatkan efisiensi dokumentasi HR.",
+        "Mengelola dan memperbarui database karyawan agar data tetap akurat dan terstruktur melalui Excel dan spreadsheet.",
+        "Mengoptimalkan sistem absensi digital menggunakan AppSheet untuk meningkatkan ketepatan presensi.",
+        "Mendukung aktivitas administrasi HR sehari-hari.",
+      ],
+    },
+    {
+      role: 'Pertukaran Mahasiswa di UPN "Veteran" Yogyakarta',
+      company: "Kampus Merdeka",
+      type: "Full Time",
+      period: "Aug 2022 - Jan 2023",
+      duration: "6 months",
+      location: "Yogyakarta, Indonesia",
+      setup: "On Site",
+      accent: "#7F9E1B",
+      points: [
+        'Mengikuti program Pertukaran Mahasiswa Merdeka Batch 2 di UPN "Veteran" Yogyakarta.',
+        "Berpartisipasi dalam kegiatan sosial dan budaya melalui Modul Nusantara untuk memperkuat kerja sama tim dan kemampuan beradaptasi.",
+        "Terlibat dalam program berbasis masyarakat seperti bersih pantai, kunjungan ke panti asuhan, workshop batik, dan kunjungan museum.",
+      ],
+    },
+    {
+      role: "Admin",
+      company: "Kopi Chuseyo",
+      type: "Full Time",
+      period: "May 2021 - Nov 2021",
+      duration: "7 months",
+      location: "Jakarta, Indonesia",
+      setup: "Remote",
+      accent: "#5C5F6B",
+      points: [
+        "Mencatat data penjualan dan menyusun laporan keuangan harian.",
+        "Mengelola administrasi transaksi online dalam sistem kerja remote.",
+        "Mendukung kegiatan operasional Chuseyo K-Pop Store.",
+      ],
+    },
+    {
+      role: "Graphic Designer",
+      company: "CASEIZONE",
+      type: "Part Time",
+      period: "Aug 2020 - Jul 2021",
+      duration: "1 year",
+      location: "Jakarta, Indonesia",
+      setup: "Remote",
+      accent: "#C45A93",
+      points: [
+        "Menangani visual brand dan operasional toko online untuk merchandise K-Pop custom.",
+        "Mendesain semua kebutuhan branding dan promosi.",
+        "Membantu menjaga konsistensi identitas brand dan engagement audiens.",
+        "Mendukung pengelolaan transaksi online dan manajemen pesanan.",
+      ],
+    },
+  ],
+} satisfies Record<Language, ExperienceItemData[]>;
+
+type ExperienceItemData = {
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  duration: string;
+  location: string;
+  setup: string;
+  accent: string;
+  points: string[];
+};
 
 export default function Experience() {
+  const { language } = useLanguage();
+  const content = siteContent[language].experience;
+  const experiences = experiencesByLanguage[language];
+
   return (
     <section className="min-h-screen bg-[#F6F9FE] px-6 py-16 sm:px-12 sm:py-20">
       <motion.h1
@@ -92,7 +191,7 @@ export default function Experience() {
         className="mb-12 text-center text-3xl font-bold text-[#225EA8] sm:mb-16 sm:text-4xl"
         style={{ fontFamily: "SF Pro Rounded, sans-serif" }}
       >
-        Work Experience
+        {content.title}
       </motion.h1>
 
       <div className="mx-auto w-full max-w-5xl">
@@ -102,6 +201,7 @@ export default function Experience() {
             experience={experience}
             index={index}
             isLast={index === experiences.length - 1}
+            language={language}
           />
         ))}
       </div>
@@ -113,7 +213,7 @@ export default function Experience() {
         className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-center justify-center border-t border-[#D9E2F1] pt-8 sm:mt-14"
       >
         <p className="mb-4 text-center text-sm font-medium uppercase tracking-[0.08em] text-[#667085]">
-          Download Curriculum Vitae
+          {content.download}
         </p>
 
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
@@ -139,9 +239,9 @@ export default function Experience() {
               </svg>
             </span>
             <span className="flex flex-col items-start text-left">
-              <span>CV English</span>
+              <span>{content.cvEnglish}</span>
               <span className="text-xs font-medium text-[#667085]">
-                PDF download
+                {content.pdf}
               </span>
             </span>
           </a>
@@ -168,9 +268,9 @@ export default function Experience() {
               </svg>
             </span>
             <span className="flex flex-col items-start text-left">
-              <span>CV Indonesia</span>
+              <span>{content.cvIndonesian}</span>
               <span className="text-xs font-medium text-[#667085]">
-                PDF download
+                {content.pdf}
               </span>
             </span>
           </a>
@@ -184,11 +284,15 @@ function ExperienceItem({
   experience,
   index,
   isLast,
+  language,
 }: {
-  experience: (typeof experiences)[number];
+  experience: ExperienceItemData;
   index: number;
   isLast: boolean;
+  language: Language;
 }) {
+  const content = siteContent[language].experience;
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -221,7 +325,7 @@ function ExperienceItem({
               backgroundColor: `${experience.accent}14`,
             }}
           >
-            {index === 0 ? "Current" : "Past"}
+            {index === 0 ? content.current : content.past}
           </span>
           <p
             className="text-sm font-semibold sm:text-base"

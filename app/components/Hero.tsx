@@ -1,13 +1,16 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { siteContent } from "../data/siteContent";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Hero() {
+  const { language } = useLanguage();
+  const content = siteContent[language].hero;
+
   return (
     <section className="flex flex-col items-center justify-center text-center min-h-[80vh] bg-[#f7faff] px-4">
-
       <div className="scale-[0.85] sm:scale-90 md:scale-100 flex flex-col items-center">
-        {/* Foto Profil */}
         <motion.div
           className="mb-6 w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] rounded-full overflow-hidden flex items-center justify-center"
           animate={{
@@ -29,7 +32,6 @@ export default function Hero() {
             width={200}
             height={200}
             style={{ borderRadius: "50%" }}
-            quality={100}
             className="object-cover"
           />
         </motion.div>
@@ -39,12 +41,21 @@ export default function Hero() {
           Dannes Luthfiyah Salmaa
         </h1>
 
-        <p className="max-w-md text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 leading-snug">
-          An Informatics Engineering graduate with a strong
-          <br />
-          interest in <AnimatedWord text="HR" />, <AnimatedWord text="Design" />,
-          and <AnimatedWord text="AI" />.
-        </p>
+        <div className="max-w-2xl text-gray-600">
+          <p className="text-xs leading-snug whitespace-nowrap sm:text-sm md:text-base lg:text-lg">
+            {content.introTop}
+          </p>
+          {content.introBottom ? (
+            <p className="text-xs leading-snug sm:text-sm md:text-base lg:text-lg">
+              {content.introBottom}
+            </p>
+          ) : null}
+          <p className="mt-1 text-xs leading-snug sm:text-sm md:text-base lg:text-lg">
+            <AnimatedWord text={content.interests[0]} />,{" "}
+            <AnimatedWord text={content.interests[1]} />, {content.conjunction}{" "}
+            <AnimatedWord text={content.interests[2]} />.
+          </p>
+        </div>
       </div>
     </section>
   );

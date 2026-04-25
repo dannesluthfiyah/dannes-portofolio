@@ -6,13 +6,19 @@ import ProjectCard from "./ProjectCard";
 import DesignCardDeck from "./DesignCardDeck";
 import { useEffect, useRef, useState } from "react";
 import {
-  designProjectDetails,
-  projectCategories,
+  getDesignProjectDetails,
+  getProjectCategories,
   type DesignProjectDetail,
   type ProjectItem,
 } from "../data/projects";
+import { useLanguage } from "./LanguageProvider";
+import { siteContent } from "../data/siteContent";
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const content = siteContent[language].projects;
+  const designProjectDetails = getDesignProjectDetails(language);
+  const projectCategories = getProjectCategories(language);
   const slidesToShow = 3;
   const [activeDesignProject, setActiveDesignProject] =
     useState<DesignProjectDetail | null>(null);
@@ -56,7 +62,7 @@ export default function Projects() {
           className="text-3xl sm:text-4xl font-bold text-[#225EA8] mb-14 text-center"
           style={{ fontFamily: "SF Pro Rounded, sans-serif" }}
         >
-          Projects
+          {content.title}
         </motion.h1>
 
         <div className="space-y-28 max-w-7xl mx-auto relative">
@@ -70,6 +76,7 @@ export default function Projects() {
               slidesToShow={slidesToShow}
               index={index}
               onOpenDetail={handleOpenDetail}
+              language={language}
             />
           ))}
         </div>
@@ -111,13 +118,14 @@ export default function Projects() {
                     onClick={() => setActiveDesignProject(null)}
                     className="absolute right-4 top-4 sm:static shrink-0 rounded-full border border-slate-300 bg-white px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5"
                   >
-                    Close
+                    {content.close}
                   </button>
                 </div>
 
                 <DesignCardDeck
                   cards={activeDesignProject.cards}
                   accent={activeDesignProject.accent}
+                  language={language}
                 />
               </div>
             </motion.div>
@@ -136,6 +144,7 @@ function ProjectCategory({
   slidesToShow,
   index,
   onOpenDetail,
+  language,
 }: {
   title: string;
   color: string;
@@ -144,6 +153,7 @@ function ProjectCategory({
   slidesToShow: number;
   index: number;
   onOpenDetail: (slug: string) => void;
+  language: "en" | "id";
 }) {
   const totalSlides = projects.length;
   const sliderRef = useRef<Slider | null>(null);
@@ -289,6 +299,7 @@ function ProjectCategory({
                   codeLink={project.codeLink}
                   category={title}
                   color={color}
+                  language={language}
                 />
               </div>
             ))}
@@ -312,6 +323,7 @@ function ProjectCategory({
                   codeLink={project.codeLink}
                   category={title}
                   color={color}
+                  language={language}
                 />
               </div>
             ))}

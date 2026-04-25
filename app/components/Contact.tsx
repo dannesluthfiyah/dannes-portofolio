@@ -1,8 +1,13 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { siteContent } from "../data/siteContent";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const content = siteContent[language].contact;
+
   const contacts = [
     {
       name: "Gmail",
@@ -81,7 +86,7 @@ export default function Contact() {
         className="text-3xl sm:text-4xl font-bold text-[#225EA8] mb-14 text-center"
         style={{ fontFamily: "SF Pro Rounded, sans-serif" }}
       >
-        Let&apos;s Connect!
+        {content.title}
       </motion.h1>
 
       <div className="flex w-full max-w-md flex-col gap-5 sm:gap-7">

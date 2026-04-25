@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { Language } from "./LanguageProvider";
+import { siteContent } from "../data/siteContent";
 
 export default function ProjectCard({
   title,
@@ -14,6 +16,7 @@ export default function ProjectCard({
   codeLink,
   category,
   color,
+  language,
 }: {
   title: string;
   description: string;
@@ -26,10 +29,14 @@ export default function ProjectCard({
   codeLink?: string;
   category: string;
   color: string;
+  language: Language;
 }) {
   const href = demoLink;
   const isInternal = Boolean(detailSlug && onOpenDetail);
   const accentColor = projectColor ?? color;
+  const content = siteContent[language].projects;
+  const isDesignCategory = category === "Design" || category === "Desain";
+  const isTechCategory = category === "Tech";
 
   const cardContent = (
     <>
@@ -60,7 +67,7 @@ export default function ProjectCard({
         </h3>
         <p className="text-gray-600 text-xs sm:text-sm mb-3">{description}</p>
         <p className="text-[10px] sm:text-xs text-gray-500">
-          <span className="font-medium">Tools:</span> {tools}
+          <span className="font-medium">{content.tools}:</span> {tools}
         </p>
       </div>
 
@@ -72,15 +79,15 @@ export default function ProjectCard({
               style={{ color: accentColor }}
             >
               {isInternal
-                ? "View Gallery"
-                : category === "Design" || category === "Tech"
-                  ? "Open Project"
-                  : "Live Demo"}
+                ? content.viewGallery
+                : isDesignCategory || isTechCategory
+                  ? content.openProject
+                  : content.liveDemo}
             </span>
           )}
-          {codeLink && category !== "Design" && category !== "Tech" && (
+          {codeLink && !isDesignCategory && !isTechCategory && (
             <span className="text-xs sm:text-sm font-semibold text-gray-600">
-              Code
+              {content.code}
             </span>
           )}
         </div>

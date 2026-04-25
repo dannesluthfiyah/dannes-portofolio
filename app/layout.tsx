@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 // import { Poppins, Inter_Tight } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import AppShell from "./components/AppShell";
 
 // const poppins = Poppins({
 //   subsets: ["latin"],
@@ -28,8 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#F6F9FE]">
-        <Navbar />
-        <main className="pt-16">{children}</main>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

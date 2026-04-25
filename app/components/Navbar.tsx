@@ -2,17 +2,20 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-];
+import { siteContent } from "../data/siteContent";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Navbar() {
+  const { language, setLanguage } = useLanguage();
+  const content = siteContent[language].nav;
+  const navItems = [
+    { name: content.home, href: "#home" },
+    { name: content.about, href: "#about" },
+    { name: content.projects, href: "#projects" },
+    { name: content.skills, href: "#skills" },
+    { name: content.experience, href: "#experience" },
+    { name: content.contact, href: "#contact" },
+  ];
   const [activeSection, setActiveSection] = useState<string>("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -65,12 +68,12 @@ export default function Navbar() {
 
         <button
           type="button"
-          aria-label="Toggle navigation"
+          aria-label={content.mobileMenu}
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((open) => !open)}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D9E2F1] bg-white text-[#225EA8] shadow-sm sm:hidden"
         >
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">{content.mobileMenu}</span>
           <div className="flex flex-col gap-1.5">
             <span className="h-0.5 w-4 rounded-full bg-current" />
             <span className="h-0.5 w-4 rounded-full bg-current" />
@@ -78,29 +81,86 @@ export default function Navbar() {
           </div>
         </button>
 
-        <ul className="hidden items-center gap-4 text-sm sm:flex sm:gap-6 sm:text-base">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.href.substring(1);
-            return (
-              <li key={item.name}>
-                <a
-                  href={item.href}
-                  className={`transition ${
-                    isActive
-                      ? "font-semibold text-[#225EA8]"
-                      : "text-[#667085] hover:text-[#225EA8]"
-                  }`}
-                >
-                  {item.name}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="hidden items-center gap-4 sm:flex">
+          <div className="rounded-full border border-[#D9E2F1] bg-white p-1 shadow-sm">
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${
+                language === "en"
+                  ? "bg-[#225EA8] text-white"
+                  : "text-[#667085] hover:text-[#225EA8]"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("id")}
+              className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${
+                language === "id"
+                  ? "bg-[#225EA8] text-white"
+                  : "text-[#667085] hover:text-[#225EA8]"
+              }`}
+            >
+              ID
+            </button>
+          </div>
+
+          <ul className="flex items-center gap-6 text-base">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className={`transition ${
+                      isActive
+                        ? "font-semibold text-[#225EA8]"
+                        : "text-[#667085] hover:text-[#225EA8]"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
 
       {isMobileMenuOpen && (
         <div className="border-t border-[#D9E2F1] bg-[#F6F9FE]/95 px-4 pb-4 pt-3 shadow-sm sm:hidden">
+          <div className="mb-3 flex items-center justify-between rounded-xl border border-[#D9E2F1] bg-white px-4 py-3">
+            <span className="text-sm font-semibold text-[#2F3340]">
+              {content.language}
+            </span>
+            <div className="rounded-full border border-[#D9E2F1] bg-[#F6F9FE] p-1">
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                  language === "en"
+                    ? "bg-[#225EA8] text-white"
+                    : "text-[#667085]"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("id")}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                  language === "id"
+                    ? "bg-[#225EA8] text-white"
+                    : "text-[#667085]"
+                }`}
+              >
+                ID
+              </button>
+            </div>
+          </div>
+
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);

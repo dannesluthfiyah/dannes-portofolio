@@ -1,8 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import SkillCard from "./SkillCard";
+import { siteContent } from "../data/siteContent";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Skills() {
+  const { language } = useLanguage();
+  const content = siteContent[language].skills;
+
   const skills = [
     { name: "HR Administration", img: "/skills/hr.png" },
     { name: "Ms. Office", img: "/skills/office.png" },
@@ -24,7 +29,6 @@ export default function Skills() {
 
   return (
     <section className="min-h-screen bg-[#F6F9FE] px-6 sm:px-12 py-20 flex flex-col items-center">
-      {/* Judul */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -32,10 +36,9 @@ export default function Skills() {
         className="text-3xl sm:text-4xl font-bold text-[#225EA8] mb-14 text-center"
         style={{ fontFamily: "SF Pro Rounded, sans-serif" }}
         >
-        Technical Skills
+        {content.title}
       </motion.h1>
 
-      {/* Grid */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

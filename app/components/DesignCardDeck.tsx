@@ -4,15 +4,20 @@ import { motion, PanInfo } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import type { DesignDeckCard } from "../data/projects";
+import type { Language } from "./LanguageProvider";
+import { siteContent } from "../data/siteContent";
 
 export default function DesignCardDeck({
   cards,
   accent,
+  language,
 }: {
   cards: DesignDeckCard[];
   accent: string;
+  language: Language;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const content = siteContent[language].projects;
 
   const visibleCards = useMemo(() => {
     return cards.map((card, index) => {
@@ -135,7 +140,7 @@ export default function DesignCardDeck({
           className="rounded-full border px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold transition hover:bg-white"
           style={{ borderColor: accent, color: accent }}
         >
-          Prev
+          {content.previous}
         </button>
         <div className="flex items-center gap-2">
           {cards.map((_, index) => (
@@ -154,7 +159,7 @@ export default function DesignCardDeck({
           className="rounded-full border px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold transition hover:bg-white"
           style={{ borderColor: accent, color: accent }}
         >
-          Next
+          {content.next}
         </button>
       </div>
     </div>
