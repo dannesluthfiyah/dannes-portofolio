@@ -9,7 +9,7 @@ export default function Hero() {
   const content = siteContent[language].hero;
 
   return (
-    <section className="flex flex-col items-center justify-center text-center min-h-[80vh] bg-[#f7faff] px-4">
+    <section className="flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center bg-[#f7faff] px-4 text-center">
       <div className="scale-[0.85] sm:scale-90 md:scale-100 flex flex-col items-center">
         <motion.div
           className="mb-6 w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] rounded-full overflow-hidden flex items-center justify-center"
