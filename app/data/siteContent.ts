@@ -22,7 +22,7 @@ export const siteContent = {
     about: {
       title: "About Me",
       body:
-        "I am a Bachelor's graduate in Informatics Engineering with experience in HR and Graphic Design. In addition, I have a strong interest in Data Analytics and AI. I enjoy exploring design and emerging technologies to keep growing in those fields.",
+        "I am a Bachelor's graduate in Informatics Engineering with experience in HR support and operations, including employee data management, BPJS and tax administration, and report preparation. I also have a passion for visual design and am proficient in Figma, Canva, and Photoshop. My background in Informatics Engineering also led me into the world of AI, which became the focus of my thesis. Outside of my main job, I actively explore graphic design and AI, and I believe the combination of people skills, creativity, and technology is a strong advantage in today's workplace.",
       scholarshipNote:
         "Recipient of the 2021 Riau Provincial Achievement Scholarship",
       exchangeLabel: "Student Exchange",
@@ -56,7 +56,7 @@ export const siteContent = {
       title: "Let's Connect!",
     },
     footer: {
-      rights: "(c) 2026 Dannes Luthfiyah Salmaa. All rights reserved.",
+      rights: "© 2026 Dannes Luthfiyah Salmaa. All rights reserved.",
     },
   },
   id: {
@@ -79,7 +79,7 @@ export const siteContent = {
     about: {
       title: "Tentang Saya",
       body:
-        "Saya lulusan S1 Teknik Informatika dengan pengalaman di bidang HR dan Desain Grafis. Di samping itu, saya juga memiliki minat yang kuat dalam Data Analytics dan AI. Saya senang mengeksplorasi desain dan teknologi terkini untuk terus berkembang di bidang-bidang tersebut.",
+        "Saya lulusan S1 Teknik Informatika dengan pengalaman di bidang HR support dan operasional, mulai dari pengelolaan data karyawan, administrasi BPJS dan pajak, hingga penyusunan laporan. Selain itu, saya juga memiliki passion di bidang desain visual dan terbiasa menggunakan Figma, Canva, maupun Photoshop. Latar belakang Teknik Informatika saya juga membawa saya ke dunia AI, skripsi saya pun mengangkat topik ini. Saat ini saya aktif mengeksplorasi desain grafis dan AI di luar pekerjaan utama, karena saya percaya kombinasi antara people skill, kreativitas, dan teknologi bisa jadi nilai lebih di dunia pekerjaan saat ini.",
       scholarshipNote: "Penerima Beasiswa Prestasi Pemprov Riau 2021",
       exchangeLabel: "Pertukaran Mahasiswa",
       organizationLabel: "Organisasi / Klub",
@@ -112,7 +112,7 @@ export const siteContent = {
       title: "Mari Terhubung!",
     },
     footer: {
-      rights: "(c) 2026 Dannes Luthfiyah Salmaa. Hak cipta dilindungi.",
+      rights: "© 2026 Dannes Luthfiyah Salmaa. Hak cipta dilindungi.",
     },
   },
 } satisfies Record<Language, unknown>;

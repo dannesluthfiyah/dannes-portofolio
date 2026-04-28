@@ -46,9 +46,67 @@ export default function About() {
               {content.title}
             </h2>
 
-            <p className="mb-5 max-w-[34rem] text-left text-sm leading-relaxed text-[#444444] sm:text-base md:text-justify">
-              {content.body}
-            </p>
+            <div className="mb-5 max-w-[36rem] text-justify text-sm leading-7 text-[#444444] sm:text-base">
+              {language === "id" ? (
+                <p className="m-0">
+                  Saya lulusan S1 Teknik Informatika dengan pengalaman di
+                  bidang <strong className="font-semibold text-[#444444]">HR support dan operasional</strong>, mulai
+                  dari pengelolaan data karyawan, administrasi BPJS dan pajak,
+                  hingga penyusunan laporan. Selain itu, saya juga memiliki
+                  <strong className="font-semibold text-[#444444]"> passion di bidang desain visual</strong> dan
+                  terbiasa menggunakan{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    Figma, Canva, dan Photoshop
+                  </strong>
+                  .
+                  <br />
+                  <br />
+                  Latar belakang Teknik Informatika saya juga membawa saya ke
+                  dunia <strong className="font-semibold text-[#444444]">AI</strong>, dan skripsi saya pun
+                  mengangkat topik ini. Saat ini saya aktif mengeksplorasi{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    desain grafis dan AI
+                  </strong>{" "}
+                  di luar pekerjaan utama, karena saya percaya kombinasi antara{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    people skill, kreativitas, dan teknologi
+                  </strong>{" "}
+                  bisa jadi nilai lebih di dunia pekerjaan saat ini.
+                </p>
+              ) : (
+                <p className="m-0">
+                  I am a Bachelor's graduate in Informatics Engineering with
+                  experience in{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    HR support and operations
+                  </strong>
+                  , ranging from employee data management, BPJS, tax
+                  administration and report preparation. I also have a{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    passion for visual design
+                  </strong>{" "}
+                  and am familiar with{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    Figma, Canva, and Photoshop
+                  </strong>
+                  .
+                  <br />
+                  <br />
+                  My Informatics Engineering background also led me into{" "}
+                  <strong className="font-semibold text-[#444444]">AI</strong>,
+                  and my thesis explored this topic. I am currently actively
+                  exploring{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    graphic design and AI
+                  </strong>{" "}
+                  outside my main job because I believe the combination of{" "}
+                  <strong className="font-semibold text-[#444444]">
+                    people skills, creativity, and technology
+                  </strong>{" "}
+                  can be a strong advantage in today's workplace.
+                </p>
+              )}
+            </div>
 
             <div className="space-y-3">
               <InfoCard
@@ -60,6 +118,7 @@ export default function About() {
                 icon="/uir.png"
                 note={content.scholarshipNote}
                 fullWidth
+                keepInline
               />
 
               <p
@@ -136,12 +195,13 @@ function InfoCard({
     : fullWidth
     ? "w-full"
     : "w-full max-w-[480px]";
+  const inlineRow = fullWidth && keepInline;
 
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className={`flex items-center justify-between rounded-lg px-4 py-3 shadow-sm sm:px-5 sm:py-2.5 ${cardStyle}`}
+      className={`flex items-center justify-between overflow-hidden rounded-lg px-3 py-2.5 shadow-sm sm:px-5 sm:py-2.5 ${cardStyle}`}
       style={{
         backgroundColor: bg,
         border: `2px solid ${stroke}`,
@@ -149,34 +209,60 @@ function InfoCard({
     >
       <div className="w-full">
         <div
-          className={`flex gap-3 ${
-            value
-              ? "items-start justify-between"
-              : "items-start justify-start"
+          className={`${
+            inlineRow
+              ? "grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1.5 sm:gap-3"
+              : `flex gap-3 ${
+                  value
+                    ? "items-start justify-between"
+                    : "items-start justify-start"
+                }`
           }`}
         >
-          <div className="flex min-w-0 items-center gap-3">
+          <div
+            className={`flex min-w-0 items-center gap-2 sm:gap-3 ${
+              inlineRow ? "overflow-hidden" : ""
+            }`}
+          >
             {icon && (
               <Image
                 src={icon}
                 alt={title}
                 width={30}
                 height={30}
-                className="rounded-full"
+                className="h-[22px] w-[22px] rounded-full sm:h-[30px] sm:w-[30px]"
               />
             )}
             <div
               className={`min-w-0 items-center gap-2 ${
-                keepInline ? "flex flex-wrap md:flex-nowrap" : "flex flex-wrap"
+                inlineRow
+                  ? "flex min-w-0 flex-nowrap overflow-hidden"
+                  : keepInline
+                  ? "flex flex-wrap md:flex-nowrap"
+                  : "flex flex-wrap"
               }`}
             >
-              <p className="font-semibold text-[#444444] text-sm sm:text-base">
+              <p
+                className={`font-semibold text-[#444444] ${
+                  inlineRow
+                    ? "shrink-0 whitespace-nowrap text-[0.66rem] leading-none sm:text-base"
+                    : "text-[0.66rem] leading-none sm:text-base"
+                }`}
+              >
                 {title}
               </p>
-              <span className="text-sm text-[#747474]">|</span>
+              <span
+                className={`shrink-0 text-[#747474] ${
+                  inlineRow ? "text-[0.62rem] leading-none sm:text-sm" : "text-sm"
+                }`}
+              >
+                |
+              </span>
               <p
                 className={`text-[#747474] text-sm ${
-                  keepInline ? "md:whitespace-nowrap" : ""
+                  inlineRow
+                    ? "min-w-0 whitespace-nowrap text-[0.66rem] leading-none sm:text-base"
+                    : "text-[0.66rem] leading-none sm:text-base"
                 }`}
               >
                 {subtitle}
@@ -185,7 +271,11 @@ function InfoCard({
           </div>
 
           {value && (
-            <span className="text-xs font-semibold text-[#444444] sm:text-sm">
+            <span
+              className={`shrink-0 font-semibold text-[#444444] ${
+                inlineRow ? "whitespace-nowrap" : ""
+              } text-[0.64rem] leading-none sm:text-sm`}
+            >
               {value}
             </span>
           )}
@@ -193,7 +283,7 @@ function InfoCard({
 
         {note && (
           <p
-            className="mt-3 border-t pt-3 text-xs leading-relaxed text-[#747474] sm:text-sm"
+            className="mt-3 border-t pt-3 text-[0.66rem] leading-relaxed text-[#747474] sm:text-sm"
             style={{ borderColor: stroke }}
           >
             {note}
