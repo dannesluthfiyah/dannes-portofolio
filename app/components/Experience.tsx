@@ -68,7 +68,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "(Remote)Graphic Designer",
+      role: "(Remote) Graphic Designer",
       company: "CASEIZONE",
       type: "Part Time",
       period: "Aug 2020 - Jul 2021",
@@ -132,7 +132,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "(Remote)Social Media Admin",
+      role: "(Remote) Social Media Admin",
       company: "Kopi Chuseyo",
       type: "Full Time",
       period: "Mei 2021 - Nov 2021",
