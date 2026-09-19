@@ -7,7 +7,7 @@ import { useLanguage, type Language } from "./LanguageProvider";
 const experiencesByLanguage = {
   en: [
     {
-      role: "Operational Admin",
+      role: "HR Operational Admin",
       company: "PT. Mahir Trans Bersaudara",
       type: "Full Time",
       period: "May 2025 - Present",
@@ -22,7 +22,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "Human Resources Intern",
+      role: "HR Intern",
       company: "PT Asrindo Citraseni Satria",
       type: "Internship",
       period: "Jul 2024 - Aug 2024",
@@ -53,7 +53,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "Admin",
+      role: "Social Media Admin",
       company: "Kopi Chuseyo",
       type: "Full Time",
       period: "May 2021 - Nov 2021",
@@ -86,7 +86,7 @@ const experiencesByLanguage = {
   ],
   id: [
     {
-      role: "HR Admin Operational",
+      role: "HR Admin Operasional",
       company: "PT. Mahir Trans Bersaudara",
       type: "Full Time",
       period: "May 2025 - Sep 2026",
@@ -132,7 +132,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "Admin",
+      role: "Social MediaAdmin",
       company: "Kopi Chuseyo",
       type: "Full Time",
       period: "May 2021 - Nov 2021",
