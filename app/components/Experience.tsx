@@ -86,10 +86,10 @@ const experiencesByLanguage = {
   ],
   id: [
     {
-      role: "Admin Operational",
+      role: "HR Admin Operational",
       company: "PT. Mahir Trans Bersaudara",
       type: "Full Time",
-      period: "May 2025 - Present",
+      period: "May 2025 - Sep 2026",
       duration: "1 year",
       location: "Riau, Indonesia",
       setup: "On Site / WFO",
@@ -101,7 +101,7 @@ const experiencesByLanguage = {
       ],
     },
     {
-      role: "Human Resources Intern",
+      role: "HR Intern",
       company: "PT Asrindo Citraseni Satria",
       type: "Internship",
       period: "Jul 2024 - Aug 2024",
